@@ -60,7 +60,8 @@ class WinMain(QtWidgets.QMainWindow):
         self.song_format = '{artist_unicode} - {title_unicode}'
         self.beatmap_dir = ''
         self.beatmapset_list = []
-        self.set_beatmap_dir(r'C:\Users\asus\AppData\Local\osu!\Songs')
+        user_profile = os.getenv('USERPROFILE')
+        self.set_beatmap_dir(user_profile + r'\AppData\Local\osu!\Songs')
         self.paused = True
         self.start_paused = False
         # current idx in beatmapset_list
@@ -191,7 +192,7 @@ class WinMain(QtWidgets.QMainWindow):
 
     def closeEvent(self, a0: QtGui.QCloseEvent) -> None:
         self.play_thread.stop()
-        self.play_thread.wait(10)
+        self.play_thread.wait()
         super(WinMain, self).closeEvent(a0)
 
     def on_search_lineedit_textEdited(self, text):

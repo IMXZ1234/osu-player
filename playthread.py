@@ -4,7 +4,6 @@ import math
 from PyQt5 import QtCore
 from pydub import AudioSegment
 import pyaudio
-import array
 
 
 class PlayThread(QtCore.QThread):
